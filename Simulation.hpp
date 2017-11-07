@@ -11,11 +11,12 @@
 class Simulation
 {
 	public:
+		
 		/**
-		 * Constructor
 		 * creates a new population with the values decided by the user
 		 */
-		Simulation();
+		 
+		 void launchSimulation();
 		
 		/**
 		 * @return the number of time the user wants to run the program with the same parameters

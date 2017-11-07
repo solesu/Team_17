@@ -1,10 +1,7 @@
 #include "Simulation.hpp"
 #include <iostream>
 
-/**
- * Constructor
- */
-Simulation::Simulation()
+void Simulation::launchSimulation()
 {
 	unsigned int runs_number(runsNumber()); 
 	for(unsigned int i(0); i<runs_number; ++i) //Will run the simulation with the same parameters runs_number times
@@ -25,9 +22,7 @@ Simulation::Simulation()
 		{
 		}*/
 		//Population p(populationSize(), generationsNumber(), alleles_number, allelesFrequency(alles_number));
-	}
-
-
+	} 
 }
 
 unsigned int Simulation::runsNumber()
