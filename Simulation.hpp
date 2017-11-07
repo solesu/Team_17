@@ -15,7 +15,6 @@ class Simulation
 		/**
 		 * creates a new population with the values decided by the user
 		 */
-		 
 		 void launchSimulation();
 		
 		/**
@@ -43,11 +42,6 @@ class Simulation
 		 * @return the frequency of each alleles
 		 */
 		std::vector<double> allelesFrequency(unsigned int alleles_number);
-		
-		
-		
-
-
 };
 
 #endif
