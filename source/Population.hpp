@@ -7,14 +7,14 @@ class Population
 {
 	private:
 	std::vector<Allele*> alleles_;
+	std::vector<double> alleles_frequencies_;	///frequencies of the same  alleles
 	unsigned int size_; 						///size of the population 
 	unsigned int generations_number_;			///number of different generation in the population
 	unsigned int alleles_number_;				///number of allele s in the population
-	std::vector<double> alleles_frequencies_;	///frequencies of the same  alleles
 	
 	
 	public:
-	//constructor:
+	//Constructor and destructor
 	/**
 	@brief : constructor for population
 	@param unsigned int size: size of the population 
@@ -23,8 +23,13 @@ class Population
 	@param std::vector<double> alleles_frequencies: frequencies of the same  allele
 	 */
 	Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies);
+	/** 
+	 * @brief Destructor of Population
+	 * Delete alleles_ which contains pointers
+	 */
 	~Population();
-	//getters:
+	
+	//Getters:
 	/***
 	 @brief :getter for alleles_
 	 @return : aleles_
@@ -50,7 +55,8 @@ class Population
 	 @return : alleles_frequencies
 	 */
 	std::vector<double> getAlleles_frequencies() const;
-	//setters:
+	
+	//Setters:
 	/***
 	 @brief :setter for size_
 	 @param unsigned int size : the size you chose

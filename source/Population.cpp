@@ -1,8 +1,9 @@
-#include <iostream>
 #include "population.hpp"
+#include <iostream>
 #include <cmath>
 #include <random>
 
+	//Constructor and destructor
 	Population::Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies)
 	:size_(size), generations_number_(generations_number), alleles_number_(alleles_number), alleles_frequencies_(frequencies)
 	{}
@@ -15,8 +16,8 @@
 		}
 		alleles_.clear();
 	}
-	//getters:
 	
+	//Getters:
 	std::vector<Allele*> Population::getAlleles() const
 	{
 		return alleles_;
@@ -31,16 +32,18 @@
 	{
 		return generations_number_;
 	}
+	
 	unsigned int Population::getAlleles_number() const
 	{
 		return alleles_number_;
 	}
+	
 	std::vector<double> Population::getAlleles_frequencies() const
 	{
 		return alleles_frequencies_;
 	}
-	//setters:
 	
+	//Setters:
 	void Population::setSize(unsigned int size)
 	{
 		size_=size;
