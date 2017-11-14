@@ -23,6 +23,7 @@ class Population
 	@param std::vector<double> alleles_frequencies: frequencies of the same  allele
 	 */
 	Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies);
+	~Population();
 	//getters:
 	/***
 	 @brief :getter for alleles_
