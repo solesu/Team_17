@@ -1,9 +1,13 @@
-cmake_minimum_required (VERSION 2.8)
-project (genetics)
+project (Genetics)
+cmake_minimum_required (VERSION 2.6)
+set(CMAKE_CXX_FLAGS "-O3 -W -Wall -pedantic -std=c++11 -g")
 
-set(CMAKE_CXX_FLAGS "-W -Wall -pedantic -std=c++11")
 
-include_directories(/Users/luciegodot/Documents/EPFL/genetics_project_c++/source/include /Users/luciegodot/Documents/EPFL/genetics_project_c++/source/)
+
+
+add_executable (Genetics Allele.cpp Population.cpp Simulation.cpp main.cpp)
+
+
 ###### Doxygen generation ######
 
 # We first check if Doxygen is present.
