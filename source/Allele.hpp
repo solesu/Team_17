@@ -1,5 +1,5 @@
-#ifndef ALLELE_H
-#define ALLELE_H
+#ifndef ALLELE_HPP
+#define ALLELE_HPP
 
 class Allele {
 	public:

@@ -1,11 +1,10 @@
-#include <tclap/include/CmdLine.h>
+#include <./tclap/include/tclap/CmdLine.h>
 #include <iostream>
 #include "Population.hpp"
 #include "Simulation.hpp"
 
-//Questions: 1) puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
-//			 2) comment transformer en fct
-//			 3) Résoudre problème dossier tclap
+//Questions: 1) Problème dossier TCLAP
+//			 2)puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
 
 
 Population* parse_args(int argc, char **argv ) 
@@ -13,7 +12,7 @@ Population* parse_args(int argc, char **argv )
 	TCLAP::CmdLine cmd("Population parameters");
     TCLAP::ValueArg<char> method("m", "method", "Would you like to choose the number or alleles (press A) or to provide us with a fasta file (press F)? " , true , "char");
 			
-		if(method.getValue()=='A') ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ?
+		if(method.getValue()=='A') ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
 		{
 			TCLAP::ValueArg<unsigned int> population_size("p", "population_size", "Enter the population size: ", false, 1000, "unsigned int");
 			cmd.add(population_size);

@@ -1,5 +1,5 @@
-#ifndef NEURON_H
-#define NEURON_H
+#ifndef POPULATION_HPP
+#define POPULATION_HPP
 #include <vector>
 #include <cmath>
 #include "Allele.hpp"
