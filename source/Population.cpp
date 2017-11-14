@@ -1,4 +1,4 @@
-#include "population.hpp"
+#include "Population.hpp"
 #include <iostream>
 #include <cmath>
 #include <random>
