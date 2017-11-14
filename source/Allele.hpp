@@ -1,7 +1,7 @@
 #ifndef ALLELE_H
 #define ALLELE_H
 
-class allele {
+class Allele {
 	public:
 	
 	private:

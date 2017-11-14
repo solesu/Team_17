@@ -2,11 +2,11 @@
 #define NEURON_H
 #include <vector>
 #include <cmath>
-#include "allele.hpp"
-class population
+#include "Allele.hpp"
+class Population
 {
 	private:
-	std::vector<allele*> alleles_;
+	std::vector<Allele*> alleles_;
 	unsigned int size_; 						///size of the population 
 	unsigned int generations_number_;			///number of different generation in the population
 	unsigned int alleles_number_;				///number of allele s in the population
@@ -22,13 +22,13 @@ class population
 	@param unsigned int alleles_number: number of allele s in the population
 	@param std::vector<double> alleles_frequencies: frequencies of the same  allele
 	 */
-	population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies);
+	Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies);
 	//getters:
 	/***
 	 @brief :getter for alleles_
 	 @return : aleles_
 	 */
-	std::vector<alleles*> getAlleles() const;
+	std::vector<Allele*> getAlleles() const;
 	/***
 	 @brief :getter for size_
 	 @return : size_
