@@ -3,14 +3,16 @@
 #include <vector>
 #include <cmath>
 #include "Allele.hpp"
+//#include "random.hpp"
 class Population
 {
 	private:
-	std::vector<Allele*> alleles_;
-	std::vector<double> alleles_frequencies_;	///frequencies of the same  alleles
-	unsigned int size_; 						///size of the population 
-	unsigned int generations_number_;			///number of different generation in the population
-	unsigned int alleles_number_;				///number of allele s in the population
+	std::vector<Allele*> alleles_;				///< vector containing the different type of alleles
+	std::vector<double> alleles_frequencies_;	///<frequencies of the same  alleles
+	unsigned int size_; 						///<size of the population 
+	unsigned int generations_number_;			///<number of different generation in the population
+	unsigned int alleles_number_;				///<number of allele s in the population
+
 	
 	
 	public:
@@ -72,6 +74,14 @@ class Population
 	 @param unsigned int alleles_number: the number of alleles you want
 	 */
 	void setAlleles_number(unsigned int alleles_number);
+	
+	//update:
+	/***
+	@brief : will update for each generation the alleles frequencies
+	@param random r: object random to calculate the multinomial distribution for the new frequencies.
+	@param unsigned int generation : the new generation.
+	*/
+	void update(unsigned int generation, random r);
 };
 
 #endif
