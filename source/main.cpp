@@ -1,4 +1,4 @@
-#include <../tclap/include/tclap/CmdLine.h>
+#include <tclap/CmdLine.h>
 #include <iostream>
 #include "Population.hpp"
 #include "Simulation.hpp"

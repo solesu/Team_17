@@ -3,7 +3,7 @@
 #include <vector>
 #include <cmath>
 #include "Allele.hpp"
-//#include "random.hpp"
+#include "Random.hpp"
 class Population
 {
 	private:
@@ -81,7 +81,7 @@ class Population
 	@param random r: object random to calculate the multinomial distribution for the new frequencies.
 	@param unsigned int generation : the new generation.
 	*/
-	void update(unsigned int generation, random r);
+	void update(unsigned int generation, Random r);
 };
 
 #endif
