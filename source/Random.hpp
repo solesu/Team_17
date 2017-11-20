@@ -1,5 +1,5 @@
-#ifndef RANDOM_H
-#define RANDOM_H
+#ifndef RANDOM_HPP
+#define RANDOM_HPP
 
 #include <iostream>
 #include <random>
@@ -23,13 +23,13 @@ class Random {
 	///@brief : Simulation of a binomial distribution.
 	///@param prob : probability of the event
 	///@param pop : size of the population
-	int binomial (double prob, int pop);
+	int binomial (double prob, unsigned int pop);
 	
 	
 	///@brief : Simulation of the multinomial distribution applied to the population.
 	///@param frequencies : vector of the frequencies of the alleles in the population
 	///@param total_pop : total population  
-	std::vector<double> multinomial_pop (std::vector<double>* frequencies, int total_pop);
+	std::vector<double> multinomial_pop (std::vector<double>* frequencies, unsigned int total_pop);
 	
 	
 	///@brief : Simulation of a uniform distribution
