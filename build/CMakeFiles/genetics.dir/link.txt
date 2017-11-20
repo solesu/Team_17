@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -W -Wall -pedantic -std=c++11   CMakeFiles/genetics.dir/source/Allele.cpp.o CMakeFiles/genetics.dir/source/Population.cpp.o CMakeFiles/genetics.dir/source/Random.cpp.o CMakeFiles/genetics.dir/source/Simulation.cpp.o CMakeFiles/genetics.dir/source/main.cpp.o  -o genetics -rdynamic 

@@ -1,5 +1,0 @@
-/home/localguest/Team_17/build/CMakeFiles/unitest.dir
-/home/localguest/Team_17/build/CMakeFiles/doc.dir
-/home/localguest/Team_17/build/gtest/CMakeFiles/gtest.dir
-/home/localguest/Team_17/build/CMakeFiles/genetics.dir
-/home/localguest/Team_17/build/gtest/CMakeFiles/gtest_main.dir
