@@ -12,10 +12,10 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 Population* Simulation::parse_args(int argc, char **argv){
 	TCLAP::CmdLine cmd("Population parameters");
 	unsigned int option(0);
-	std::cout << "Would you like to choose the number or alleles (press 1) or to provide us with a fasta file (press 2)?" << std::endl;
-	std::cin>> option;
+	TCLAP::ValueArg<unsigned int> method("m", "method", "Would you like to choose the number or alleles (press 1) or to provide us with a fasta file (press 2)?" , false, 1, "unsigned int");
+	cmd.parse(argc,argv);
 			
-		if(option==1) ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
+		if(method.getValue()==1) ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
 		{
 			TCLAP::ValueArg<unsigned int> population_size("p", "population_size", "Enter the population size: ", false, 1000, "unsigned int");
 			cmd.add(population_size);
