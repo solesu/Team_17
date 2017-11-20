@@ -9,7 +9,7 @@ Random::Random ()
 
 
 
-int Random::binomial (double prob, int pop) 
+int Random::binomial (double prob, unsigned int pop) 
 {
 	std::binomial_distribution<int> bin (pop, prob);
 	return bin (gen);
