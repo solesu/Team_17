@@ -6,21 +6,23 @@
 //Questions: 1) Problème dossier TCLAP
 //			 2)puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
 
+using namespace TCLAP;
+using namespace std;
 
 Population* parse_args(int argc, char **argv ) 
 {
-	TCLAP::CmdLine cmd("Population parameters");
-    TCLAP::ValueArg<char> method("m", "method", "Would you like to choose the number or alleles (press A) or to provide us with a fasta file (press F)? " , true , "char");
+	CmdLine cmd("Population parameters");
+    ValueArg<char> method("m", "method", "Would you like to choose the number or alleles (press A) or to provide us with a fasta file (press F)? " , true ,"A", "char");
 			
 		if(method.getValue()=='A') ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
 		{
-			TCLAP::ValueArg<unsigned int> population_size("p", "population_size", "Enter the population size: ", false, 1000, "unsigned int");
+			ValueArg<unsigned int> population_size("p", "population_size", "Enter the population size: ", false, 1000, "unsigned int");
 			cmd.add(population_size);
-			TCLAP::ValueArg<unsigned int> generations_number("g", "generations_number", "Enter the number of generation: ", false, 2, "unsigned int");
+			ValueArg<unsigned int> generations_number("g", "generations_number", "Enter the number of generation: ", false, 2, "unsigned int");
 			cmd.add(generations_number);
-			TCLAP::ValueArg<unsigned int> alleles_number("a", "alleles_number", "Enter the number of different alleles: ", false, 2, "unsigned int");
+			ValueArg<unsigned int> alleles_number("a", "alleles_number", "Enter the number of different alleles: ", false, 2, "unsigned int");
 			cmd.add(alleles_number);
-			TCLAP::MultiArg<double> alleles_frequency("f", "alleles_frequency", "Enter the frequency of the alleles ", true, "double");
+			MultiArg<double> alleles_frequency("f", "alleles_frequency", "Enter the frequency of the alleles ", true, "double");
 			cmd.add(alleles_frequency);
 		} //else fasta format
 		
