@@ -14,7 +14,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 Include_directories (Before tclap/include)
 
 
-add_executable(unitest source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp source/main.cpp test/test.cpp)
+add_executable(unitest source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp test/test.cpp)
 target_link_libraries(unitest gtest gtest_main)
 add_test(unitest unitest)
 
