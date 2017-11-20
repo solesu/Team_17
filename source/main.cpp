@@ -12,7 +12,7 @@ int main(int argc, char ** argv)
 	try 
 	{  
 		unsigned int runs_number;
-		std::cout << "How many times would you like to run the program with the same parameters?" << std::endl;
+		std::cout << "How many replicates would you like to create?" << std::endl;
 		std::cin>> runs_number;
 		Simulation s;
 		Population* pop(s.parse_args(argc, argv)); 
