@@ -3,8 +3,7 @@
 #include "Population.hpp"
 #include "Simulation.hpp"
 
-//Questions: 1) Problème dossier TCLAP
-//			 2)puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
+//Questions 2)puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
 
 using namespace TCLAP;
 using namespace std;
@@ -12,9 +11,11 @@ using namespace std;
 Population* parse_args(int argc, char **argv ) 
 {
 	CmdLine cmd("Population parameters");
-    ValueArg<char> method("m", "method", "Would you like to choose the number or alleles (press A) or to provide us with a fasta file (press F)? " , true ,"A", "char");
+	unsigned int option(0);
+	std::cout << "Would you like to choose the number or alleles (press 1) or to provide us with a fasta file (press 2)?" << std::endl;
+	std::cin>> option;
 			
-		if(method.getValue()=='A') ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
+		if(option==1) ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
 		{
 			ValueArg<unsigned int> population_size("p", "population_size", "Enter the population size: ", false, 1000, "unsigned int");
 			cmd.add(population_size);
@@ -24,18 +25,17 @@ Population* parse_args(int argc, char **argv )
 			cmd.add(alleles_number);
 			MultiArg<double> alleles_frequency("f", "alleles_frequency", "Enter the frequency of the alleles ", true, "double");
 			cmd.add(alleles_frequency);
+			
+			// Parse the argv arra
+			cmd.parse(argc, argv);
+		
+		Population* pop = new Population(population_size.getValue(),generations_number.getValue(), alleles_number.getValue(),alleles_frequency.getValue());
+		
+		return pop;
+		
 		} //else fasta format
 		
-		// Parse the argv array
-		cmd.parse(argc, argv);
 		
-		unsigned int p = population_size.getValue();
-		unsigned int g = generations_number.getValue();
-		unsigned int a =  alleles_number.getValue();
-		vector<double> f= alleles_frequency.getValue();
-		
-		Population* pop = new Population(p,g,a,f);
-		return pop;
 
 }
 
@@ -43,8 +43,10 @@ int main(int argc, char ** argv)
 {
 	try 
 	{  
+		unsigned int runs_number;
 		std::cout << "How many times would you like to run the program with the same parameters?" << std::endl;
-		Population *(&parse_args(argc, argv)); 
+		std::cin>> runs_number;
+		Population* pop(parse_args(argc, argv)); 
 		Simulation s;
 		s.launchSimulation(pop, runs_number);
 	
