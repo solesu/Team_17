@@ -10,7 +10,7 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 }
 
 Population* Simulation::parse_args(int argc, char **argv){
-	CmdLine cmd("Population parameters");
+	TCLAP::CmdLine cmd("Population parameters");
 	unsigned int option(0);
 	std::cout << "Would you like to choose the number or alleles (press 1) or to provide us with a fasta file (press 2)?" << std::endl;
 	std::cin>> option;
