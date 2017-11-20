@@ -1,7 +1,8 @@
 #include "Random.hpp"
 
 
-Random::Random () : gen(rd())
+Random::Random () 
+: gen(rd())
 {
 }
 
@@ -17,7 +18,7 @@ int Random::binomial (double prob, int pop)
 
 
 
-std::vector<double> Random::multinomial_pop (std::vector<double>* frequencies, int total_pop)
+std::vector<double> Random::multinomial_pop (std::vector<double>* frequencies, unsigned int total_pop)
 {
 	std::vector<double> result;
 	int new_pop = total_pop;
