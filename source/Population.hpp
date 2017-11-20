@@ -82,7 +82,7 @@ class Population
 	@param random r: object random to calculate the multinomial distribution for the new frequencies.
 	@param unsigned int generation : the new generation.
 	*/
-	void update(unsigned int generation, Random r);
+	void update(Random r);
 };
 
 #endif
