@@ -28,7 +28,7 @@ class Random {
 	///@brief : Simulation of the multinomial distribution applied to the population.
 	///@param frequencies : vector of the frequencies of the alleles in the population
 	///@param total_pop : total population  
-	std::vector<double> multinomial_pop (std::vector<double>* frequencies, unsigned int size_pop);
+	std::vector<double> multinomial_pop (std::vector<double> frequencies, unsigned int size_pop);
 	
 	
 	///@brief : Simulation of a uniform distribution
