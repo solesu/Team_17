@@ -2,6 +2,7 @@
 #define SIMULATION_HPP
 
 #include "Population.hpp"
+#include <tclap/CmdLine.h>
 
 
 /**
@@ -16,6 +17,7 @@ class Simulation
 		 * creates a new population with the values decided by the user
 		 */
 		 void launchSimulation(Population* p, unsigned int runs_number);
+		 Population* parse_args(int argc, char **argv);
 		
 		
 };
