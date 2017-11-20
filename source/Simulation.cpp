@@ -1,7 +1,5 @@
 #include "Simulation.hpp"
 
-#include "sequence.fasta"
-
 #include <iostream>
 
 void Simulation::launchSimulation(Population* p, unsigned int runs_number)

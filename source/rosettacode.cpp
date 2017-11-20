@@ -4,9 +4,9 @@
 
 struct allele 
 {
-  double num; //number of people with this allele
-  std::string seq; //the allele sequence
-  double freq; //frequence of the allele
+	double num; //number of people with this allele
+	std::string seq; //the allele sequence
+	double freq; //frequence of the allele
 };
 
 //g++ rosettacode.cpp -o test.exe
