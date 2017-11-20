@@ -4,6 +4,7 @@
 #include <cmath>
 #include "Allele.hpp"
 #include "Random.hpp"
+
 class Population
 {
 	private:

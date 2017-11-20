@@ -1,7 +1,6 @@
 #ifndef RANDOM_HPP
 #define RANDOM_HPP
 
-#include <iostream>
 #include <random>
 
 
@@ -9,7 +8,7 @@ class Random {
 	
 	private :
 	
-	static std::random_device rd;   ///<Definition of the random device.
+	std::random_device rd;   ///<Definition of the random device.
 	std::mt19937 gen;   ///<Generator of random numbers.
 	
 	

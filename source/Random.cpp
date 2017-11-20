@@ -2,8 +2,8 @@
 
 
 Random::Random () 
-: gen(rd())
 {
+	gen = std::mt19937(rd());
 }
 
 
