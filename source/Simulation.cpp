@@ -11,9 +11,9 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 
 Population* Simulation::parse_args(int argc, char **argv){
 	TCLAP::CmdLine cmd("Population parameters");
-	unsigned int option(0);
-	std::cout << "Would you like to choose the number or alleles (press 1) or to provide us with a fasta file (press 2)?" << std::endl;
-	std::cin>> option;
+	unsigned int option;
+	std::cout << "Would you like to enter the values manually(press 1) or to provide us wuth a fata file (press 2)?" << std::endl;
+	std::cin>>option;
 			
 		if(option==1) ///Est-il possible d'utilise alors qu'on a pas fait cmd.parse ? -> sort du bloc if grrrr
 		{
@@ -28,6 +28,8 @@ Population* Simulation::parse_args(int argc, char **argv){
 			
 			// Parse the argv arra
 			cmd.parse(argc, argv);
+			
+			//TRY AND CATCH -> alleles number annd frequency
 		
 		Population* pop = new Population(population_size.getValue(),generations_number.getValue(), alleles_number.getValue(),alleles_frequency.getValue());
 		
