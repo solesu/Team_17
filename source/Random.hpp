@@ -2,6 +2,7 @@
 #define RANDOM_HPP
 
 #include <random>
+#include <cassert>
 
 
 class Random {
@@ -22,7 +23,7 @@ class Random {
 	///@brief : Simulation of a binomial distribution.
 	///@param prob : probability of the event
 	///@param pop : size of the population
-	int binomial (double prob, unsigned int pop);
+	double binomial (double prob, unsigned int pop);
 	
 	
 	///@brief : Simulation of the multinomial distribution applied to the population.
