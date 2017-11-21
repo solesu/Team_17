@@ -14,9 +14,14 @@ int main(int argc, char ** argv)
 	std::cout << "How many replicates would you like to create?" << std::endl;
 	std::cin>> runs_number;
 	Simulation s;
-	Population* pop(s.parse_args(argc, argv)); 
-	s.launchSimulation(pop, runs_number);
 	
+	std::cout<<"DONE"<<std::endl;
+
+	//Population* pop(*s.parse_args(argc, argv)); 
+		
+
+	s.launchSimulation(s.parse_args(argc, argv), runs_number);
+	std::cout<<"DONE"<<std::endl;
 	 
 	
 	

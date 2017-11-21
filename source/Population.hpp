@@ -83,7 +83,7 @@ class Population
 	@param random r: object random to calculate the multinomial distribution for the new frequencies.
 	@param unsigned int generation : the new generation.
 	*/
-	void update(Random r);	
+	void update(Random& r);	
 	/***
 	@brief : print the frequencies of each generation for each replicate in the desired fromat
 	@param ostream& ouput 

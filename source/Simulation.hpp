@@ -12,7 +12,7 @@
 class Simulation
 {
 	public:
-		
+		Simulation()=default;
 		/**
 		 * creates a new population with the values decided by the user
 		 */

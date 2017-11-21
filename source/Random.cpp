@@ -7,9 +7,6 @@ Random::Random ()
 	gen = std::mt19937(rd());
 }
 
-
-
-
 double Random::binomial (double prob, unsigned int pop) 
 {
 	std::binomial_distribution<int> bin (pop, prob);
