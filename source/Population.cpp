@@ -64,7 +64,15 @@
 	void Population::update(unsigned int generation, Random r)
 	{
 		//update frequencies for each generation:
-		alleles_frequencies_= (r.multinomial_pop(&alleles_frequencies_, size_));
+		alleles_frequencies_= (r.multinomial_pop(alleles_frequencies_, size_));
 		generations_number_ = generation;
 	}
 
+	void Population::print(std::ostream& output) const
+	{
+		output << "\t"; 
+		for (size_t i (0); i < alleles_frequencies_.size(); ++i)
+		{
+			output << std::fixed << std::setprecision(3) << alleles_frequencies_[i] << "|";
+		}
+	}

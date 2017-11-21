@@ -2,6 +2,7 @@
 #define POPULATION_HPP
 #include <vector>
 #include <cmath>
+#include <iomanip>
 #include "Allele.hpp"
 #include "Random.hpp"
 
@@ -83,6 +84,13 @@ class Population
 	@param unsigned int generation : the new generation.
 	*/
 	void update(unsigned int generation, Random r);
+	
+	/***
+	@brief : print the frequencies of each generation for each replicate in the desired fromat
+	@param ostream& ouput 
+	*/
+	void print(std::ostream& output) const;
+	
 };
 
 #endif
