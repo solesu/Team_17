@@ -3,10 +3,6 @@
 #include "Population.hpp"
 #include "Simulation.hpp"
 
-//Questions 2)puis-je utiliser valeur avant d'avoir fait cmd.parse ou faire plusieurs fois
-
-
-
 int main(int argc, char ** argv)
 {
 	
