@@ -4,7 +4,7 @@ set(CMAKE_CXX_FLAGS "-O3 -W -Wall -pedantic -std=c++11")
 
 
 
-add_executable(genetics source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp source/main.cpp)
+add_executable(genetics source/Allele.hpp source/Population.cpp source/Random.cpp source/Simulation.cpp source/main.cpp)
 
 # google testing
 add_subdirectory(gtest)
@@ -14,7 +14,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 Include_directories (Before tclap/include)
 
 
-add_executable(unitest source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp source/main.cpp test/test.cpp)
+add_executable(unitest source/Allele.hpp source/Population.cpp source/Random.cpp source/Simulation.cpp test/test.cpp)
 target_link_libraries(unitest gtest gtest_main)
 add_test(unitest unitest)
 
