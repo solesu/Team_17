@@ -1,37 +1,41 @@
 #include "Random.hpp"
+#include <iostream>
 
 
 Random::Random () 
-: gen(rd())
 {
+	gen = std::mt19937(rd());
 }
 
 
 
 
-int Random::binomial (double prob, int pop) 
+double Random::binomial (double prob, unsigned int pop) 
 {
 	std::binomial_distribution<int> bin (pop, prob);
-	return bin (gen);
+	return bin(gen);
 }
 
 
 
 
-std::vector<double> Random::multinomial_pop (std::vector<double>* frequencies, unsigned int total_pop)
+std::vector<double> Random::multinomial_pop (std::vector<double> frequencies, unsigned int size_pop)
 {
-	std::vector<double> result;
-	int new_pop = total_pop;
-	int old_pop = total_pop;
+	std::vector<double> new_frequencies;
+	unsigned int new_pop = size_pop;
+	unsigned int old_pop = size_pop;
 	
-	for (unsigned int i = 0; i < frequencies->size(); i += 1)
+	for (unsigned int i = 0; i < frequencies.size(); i += 1)
 	{
-		result.push_back((binomial(((*frequencies)[i]*total_pop)/old_pop, new_pop))/total_pop);
-		new_pop  -= (*frequencies)[i]*total_pop;
-		old_pop -= result[i];
+		new_frequencies.push_back((binomial(((frequencies)[i]*size_pop)/old_pop, new_pop)));
+		new_pop  -= (new_frequencies)[i]*size_pop;
+		old_pop -= frequencies[i];
 	}
-
-	return result;
+	
+	assert (old_pop==0);
+	assert (new_pop==0);
+	assert (frequencies.size()==new_frequencies.size());
+	return new_frequencies;
 }
 
 
@@ -39,6 +43,6 @@ std::vector<double> Random::multinomial_pop (std::vector<double>* frequencies, u
 
 int Random::uniform(int value)
 {
-	std::uniform_int_distribution<int> uni (0, value);
+	std::uniform_int_distribution<unsigned int> uni (0, value);
 	return uni(gen);
 }
