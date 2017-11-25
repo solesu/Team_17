@@ -22,7 +22,9 @@ class Random {
 	///@brief : Simulation of a binomial distribution.
 	///@param prob : probability of the event
 	///@param pop : size of the population
+
 	double binomial (double prob, unsigned int pop);
+
 	
 	
 	///@brief : Simulation of the multinomial distribution applied to the population.

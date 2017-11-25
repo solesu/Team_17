@@ -4,9 +4,9 @@
 
 
 	//Constructor and destructor
-	Population::Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies)
-	:size_(size), generations_number_(generations_number), alleles_number_(alleles_number), alleles_frequencies_(frequencies)
-	{}
+	Population::Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies, std::vector<unsigned int> marker_sites)
+    :size_(size), generations_number_(generations_number), alleles_number_(alleles_number), alleles_frequencies_(frequencies), marker_sites_(marker_sites)
+ 	{}
 	
 	Population::~Population()
 	{

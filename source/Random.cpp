@@ -7,10 +7,13 @@ Random::Random ()
 	gen = std::mt19937(rd());
 }
 
+
+
+
 double Random::binomial (double prob, unsigned int pop) 
 {
 	std::binomial_distribution<int> bin (pop, prob);
-	return bin (gen);
+	return bin(gen);
 }
 
 
@@ -35,11 +38,3 @@ std::vector<double> Random::multinomial_pop (std::vector<double> frequencies, un
 	return new_frequencies;
 }
 
-
-
-
-int Random::uniform(int value)
-{
-	std::uniform_int_distribution<unsigned int> uni (0, value);
-	return uni(gen);
-}

@@ -11,6 +11,7 @@ class Population
 	private:
 	std::vector<Allele*> alleles_;				///< vector containing the different type of alleles
 	std::vector<double> alleles_frequencies_;	///<frequencies of the same  alleles
+	std::vector<unsigned int> marker_sites_;   ///<marker sites taken into consideration for evolution of population
 	unsigned int size_; 						///<size of the population 
 	unsigned int generations_number_;			///<number of different generation in the population
 	unsigned int alleles_number_;				///<number of allele s in the population
@@ -26,7 +27,7 @@ class Population
 	@param unsigned int alleles_number: number of allele s in the population
 	@param std::vector<double> alleles_frequencies: frequencies of the same  allele
 	 */
-	Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies);
+	Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies, std::vector<unsigned int> marker_sites);
 	/** 
 	 * @brief Destructor of Population
 	 * Delete alleles_ which contains pointers
