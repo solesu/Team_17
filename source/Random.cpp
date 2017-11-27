@@ -1,6 +1,4 @@
 #include "Random.hpp"
-#include <iostream>
-
 
 Random::Random () 
 {
