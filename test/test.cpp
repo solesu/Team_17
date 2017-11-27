@@ -15,7 +15,8 @@
 TEST (PopulationTest, constructionGetterSetter)
 {
 	std::vector<double> frequencies({0.2,0.8});
-	Population* pop = new Population(100,3000,2, frequencies); 
+	std::vector<unsigned int> markers({1,2});
+	Population* pop = new Population(100,3000,2, frequencies, markers); 
 	EXPECT_EQ(pop->getSize(),100);
 	EXPECT_EQ(pop->getGenerations_number(),3000);
 	EXPECT_EQ(pop->getAlleles_number(),2);
