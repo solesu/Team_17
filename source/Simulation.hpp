@@ -2,7 +2,10 @@
 #define SIMULATION_HPP
 
 #include "Population.hpp"
-#include <tclap/CmdLine.h>
+#include <iostream>
+#include <fstream>
+#include <vector>
+
 
 
 /**
@@ -12,7 +15,7 @@
 class Simulation
 {
 	public:
-		
+	
 		/**
 		 * creates a new population with the values decided by the user
 		 */
