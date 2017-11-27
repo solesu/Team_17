@@ -2,8 +2,8 @@
 #define RANDOM_HPP
 
 #include <random>
+#include <iostream>
 #include <cassert>
-
 
 class Random {
 	
@@ -30,6 +30,5 @@ class Random {
 	///@param value : maximum value of the distribution
 	int uniform (int value);	
 };
-
 
 #endif
