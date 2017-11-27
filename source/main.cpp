@@ -1,4 +1,5 @@
- #include "Population.hpp"
+ #include <tclap/CmdLine.h>
+#include "Population.hpp"
  #include "Simulation.hpp"
 
  int main(int argc, char ** argv)
