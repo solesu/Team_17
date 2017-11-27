@@ -31,7 +31,7 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     std::cout << "Welcome. For the simulation to begin please insert a fasta file source:\n";
     std::cin >> infile;
     
-    //FILE VERIFICATION STILL TO ADD
+    //FILE VERIFICATION STILL TO ADD --> is open / close file at the end / what if we got wrong letters / 
     
     std::ifstream input(infile); //we create the stream
     try
@@ -113,11 +113,12 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     //last line
     if(!name.empty())
     {
-        N += 1;
+        N++;
         for (unsigned int i = 0; i < marker_sites.size(); ++i)
         {
-            sequence.push_back(content[marker_sites[i]]);
+			sequence.push_back(content[marker_sites[i]]);
         }
+        
         bool new_seq = true; //we first assume that it's a new sequence, then we check if we already have it in our population of alleles
         
         if (!population.empty())
@@ -125,8 +126,9 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
             for (unsigned int i = 0; i < population.size(); ++i)
             {
                 if (population[i].seq == sequence) //if the sequence is the same, we add +1 to the number
+                //.equal() or strcmp???
                 {
-                    population[i].num += 1;
+                    population[i].num++;
                     new_seq = false;
                 }
             }

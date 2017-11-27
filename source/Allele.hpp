@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 
-struct Allele {
+struct Allele 
+{
 	std::vector<std::string> sequences;	
 };
