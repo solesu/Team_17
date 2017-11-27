@@ -11,7 +11,8 @@ add_executable(Genetics source/main.cpp ${SOURCE_FILES})
 
 # googletest
 if (test)
-enable_testing() find_package(GTest)
+enable_testing() 
+find_package(GTest)
 if (NOT GTEST_FOUND)
 link_directories(${CMAKE_SOURCE_DIR}/extra/lib) 
 SET(GTEST_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/extra/include) 
