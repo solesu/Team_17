@@ -1,14 +1,6 @@
-#ifndef ALLELE_HPP
-#define ALLELE_HPP
-
-#include <vector>
 #include <string>
+#include <vector>
 
-class Allele {
-	public:
-	
-	private:
-		std::vector<std::string> sequences_;
-	
+struct Allele {
+	std::vector<std::string> sequences;	
 };
-#endif
