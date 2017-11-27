@@ -8,16 +8,11 @@ Random::Random ()
 }
 
 
-
-
 double Random::binomial (double prob, unsigned int pop) 
 {
 	std::binomial_distribution<int> bin (pop, prob);
 	return bin(gen);
 }
-
-
-
 
 std::vector<double> Random::multinomial_pop (std::vector<double> frequencies, unsigned int size_pop)
 {
