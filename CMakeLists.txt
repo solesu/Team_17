@@ -1,31 +1,30 @@
 cmake_minimum_required (VERSION 2.6)
-project (Team_17)
+project (Team_17_project)
 set(CMAKE_CXX_FLAGS "-O3 -W -Wall -pedantic -std=c++11")
 
-
-
-add_executable(genetics source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp source/main.cpp)
-
-# google testing
-add_subdirectory(gtest)
-enable_testing()
+set(SOURCE_FILES source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp)
 
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-Include_directories (Before tclap/include)
+include_directories (Before tclap/include)
 
+add_executable(Genetics source/main.cpp ${SOURCE_FILES})
 
-add_executable(unitest source/Allele.cpp source/Population.cpp source/Random.cpp source/Simulation.cpp test/test.cpp)
-target_link_libraries(unitest gtest gtest_main)
-add_test(unitest unitest)
-
+# googletest
+if (test)
+enable_testing() find_package(GTest)
+if (NOT GTEST_FOUND)
+link_directories(${CMAKE_SOURCE_DIR}/extra/lib) SET(GTEST_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/extra/include) SET(GTEST_BOTH_LIBRARIES libgtest.a libgtest_main.a)
+endif(NOT GTEST_FOUND)
+include_directories(${GTEST_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/src) 
+add_executable(Unittest  test/test.cpp ${SOURCE_FILES}) 
+target_link_libraries(Unittest ${GTEST_BOTH_LIBRARIES} pthread) 
+add_test(Team_17_project Unittest)
+endif(test)
 
 # add a target to generate API documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+find_package(Doxygen) 
+if (DOXYGEN_FOUND)
 add_custom_target(doc
-${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-COMMENT "Generating API documentation with Doxygen" VERBATIM
-)
+${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
+COMMENT "Generating API documentation with Doxygen" VERBATIM)
 endif(DOXYGEN_FOUND)
