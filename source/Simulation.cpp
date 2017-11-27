@@ -1,9 +1,5 @@
 #include "Simulation.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-
 void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 {
     Random randm;
@@ -191,7 +187,3 @@ Population* Simulation::create_pop(unsigned int generation_number)
 
     return aWholeNewWorld*;
 }
-
-
-
-
