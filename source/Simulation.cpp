@@ -12,7 +12,7 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 }
 
 		
-Population* Simulation::create_pop(unsigned int generation_number)
+Population* Simulation::create_pop(unsigned int generation_number, std::vector<unsigned int> marker_sites)
 {
     struct allele
     {
@@ -21,51 +21,31 @@ Population* Simulation::create_pop(unsigned int generation_number)
         double freq;
     };
     
-    std::vector<unsigned int> marker_sites;  //vector containing the positions of the wanted nucleotides
     double N = 0;           //number of sequences = number of people.
     unsigned int A = 0;     //number of different alleles.
-    std::vector<allele> population;          //vector containing the different alleles and their frequences
+    std::vector<allele> population; //vector containing the different alleles and their frequences
     
     //variables here to help the set-in
     std::string infile;
-    unsigned int markersNumber, num;
     
     std::cout << "Welcome. For the simulation to begin please insert a fasta file source:\n";
     std::cin >> infile;
     
-    try
-    {
-        std::cout << "Now please tell us how many nucleotides you are interested into:\n";
-        std::cin >> markersNumber;
-        if (markersNumber < 0)
-        {
-            throw 42;
-        }
-        
-        std::cout << "Finally please inform us the position of the nucleotides:\n";
-        for (unsigned int i = 0; i < markersNumber; ++i)
-        {
-            std::cin >> num;
-            if (num < 0)
-            {
-                throw 42;
-            }
-            marker_sites.push_back(num);
-            num.clear();
-        }
-    } catch (int answer)
-    {
-        std::cout << "Please only enter positive integers."
-    }
-    
     //FILE VERIFICATION STILL TO ADD
     
-    std::ifstream input(infile);    //we create the stream
-    if(!input.good())               //we check the file.fasta
-    {
-        std::cerr << "Error opening '"<<argv[1]<<"'. Bailing out." << std::endl;
-        return -1;
-    }
+    std::ifstream input(infile); //we create the stream
+    try
+	{	
+		if(!input.good()) //we check the file.fasta
+		{
+			throw 42;
+		}
+	}
+	catch (int answer)
+	{
+		std::cerr << "Error opening '"<< infile <<"'. Bailing out." << std::endl;
+	}
+
     
     //fasta reading
     //Sources: http://rosettacode.org/wiki/FASTA_format#C.2B.2B
@@ -77,9 +57,9 @@ Population* Simulation::create_pop(unsigned int generation_number)
             if(!name.empty()) //Print out what we read from the last entry
             {
                 N += 1;
-                for (unsigned int i = 0; i< allelesPositions.size(); ++i)
+                for (unsigned int i = 0; i< marker_sites.size(); ++i)
                 {
-                    sequence.push_back(content[allelesPositions[i]]);
+                    sequence.push_back(content[marker_sites[i]]);
                 }
                 
                 bool new_seq = true; //we first assume it is a new sequence then we check if we already have it in our population of alleles
@@ -134,9 +114,9 @@ Population* Simulation::create_pop(unsigned int generation_number)
     if(!name.empty())
     {
         N += 1;
-        for (unsigned int i = 0; i < allelesPositions.size(); ++i)
+        for (unsigned int i = 0; i < marker_sites.size(); ++i)
         {
-            sequence.push_back(content[allelesPositions[i]]);
+            sequence.push_back(content[marker_sites[i]]);
         }
         bool new_seq = true; //we first assume that it's a new sequence, then we check if we already have it in our population of alleles
         
@@ -163,7 +143,7 @@ Population* Simulation::create_pop(unsigned int generation_number)
         }
     }
     
-    /* now the vector contains the diffents alleles; we can
+    /*now the vector contains the diffents alleles; we can
      calculate the frequencies and the number of alleles
      and fill our vector containing the frequences*/
     
@@ -183,7 +163,5 @@ Population* Simulation::create_pop(unsigned int generation_number)
     std::cout << "The number of alleles is : " << A << "\nThe total number of sequences is : " << N << std::endl;
     
     //we create the pop. to begin the simulation
-    Population aWholeNewWorld(N, generations_number, A, frequencies, marker_sites);
-
-    return aWholeNewWorld*;
+    return new Population (N, generation_number, A, frequencies, marker_sites);    
 }
