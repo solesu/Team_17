@@ -31,3 +31,8 @@ std::vector<double> Random::multinomial_pop (std::vector<double> frequencies, un
 	return new_frequencies;
 }
 
+double Random::uniform_real (double min_value, double max_value)
+{
+	std::uniform_real_distribution<> dis_e(min_value, max_value);
+}	
+
