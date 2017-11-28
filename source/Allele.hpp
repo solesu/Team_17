@@ -1,6 +1,7 @@
 #include <string>
-#include <vector>
 
 struct Allele {
-	std::vector<std::string> sequences;	
+	 double num;//Not w very clear name
+     std::string seq;
+     double frequency;
 };
