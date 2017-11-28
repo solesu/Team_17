@@ -4,21 +4,15 @@
 
 
 //Constructor and destructor
-Population::Population(unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies, std::vector<unsigned int> marker_sites)
-:size_(size), generations_number_(generations_number), alleles_number_(alleles_number), alleles_frequencies_(frequencies), marker_sites_(marker_sites)
+Population::Population(std::vector<Allele> alleles, unsigned int size, unsigned int generations_number, unsigned int alleles_number, std::vector<double> frequencies)
+: alleles_(alleles), size_(size), generations_number_(generations_number), alleles_number_(alleles_number), alleles_frequencies_(frequencies)
  {}
 	
 Population::~Population()
-{
-	for(unsigned int i(0); i< alleles_.size(); ++i)
-	{
-		delete alleles_[i];
-	}
-	alleles_.clear();
-}
+{}
 	
 //Getters:
-std::vector<Allele*> Population::getAlleles() const
+std::vector<Allele> Population::getAlleles() const
 {
 	return alleles_;
 }

@@ -14,16 +14,9 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 		
 Population* Simulation::create_pop(unsigned int generation_number, std::vector<unsigned int> marker_sites)
 {
-    struct allele
-    {
-        double num;
-        std::string seq;
-        double freq;
-    };
-    
     double N = 0;           //number of sequences = number of people.
     unsigned int A = 0;     //number of different alleles.
-    std::vector<allele> population; //vector containing the different alleles and their frequences
+    std::vector<Allele> population; //vector containing the different alleles and their frequences
     
     //variables here to help the set-in
     std::string infile;
@@ -31,7 +24,7 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     std::cout << "Welcome. For the simulation to begin please insert a fasta file source:\n";
     std::cin >> infile;
     
-    //FILE VERIFICATION STILL TO ADD --> is open / close file at the end / what if we got wrong letters / 
+    //FILE VERIFICATION STILL TO ADD
     
     std::ifstream input(infile); //we create the stream
     try
@@ -76,13 +69,13 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
                     }
                     if (new_seq)
                     {
-                        allele a = {1, sequence};
+                        Allele a = {1, sequence};
                         population.push_back(a);
                     }
                 }
                 else
                 {
-                    allele a = {1, sequence};
+                    Allele a = {1, sequence};
                     population.push_back(a);
                 }
                 name.clear();
@@ -113,12 +106,11 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     //last line
     if(!name.empty())
     {
-        N++;
+        N += 1;
         for (unsigned int i = 0; i < marker_sites.size(); ++i)
         {
-			sequence.push_back(content[marker_sites[i]]);
+            sequence.push_back(content[marker_sites[i]]);
         }
-        
         bool new_seq = true; //we first assume that it's a new sequence, then we check if we already have it in our population of alleles
         
         if (!population.empty())
@@ -126,21 +118,20 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
             for (unsigned int i = 0; i < population.size(); ++i)
             {
                 if (population[i].seq == sequence) //if the sequence is the same, we add +1 to the number
-                //.equal() or strcmp???
                 {
-                    population[i].num++;
+                    population[i].num += 1;
                     new_seq = false;
                 }
             }
             if (new_seq)
             {
-                allele a = {1, sequence};
+                Allele a = {1, sequence};
                 population.push_back(a);
             }
         }
         else
         {
-            allele a = {1, sequence};
+            Allele a = {1, sequence};
             population.push_back(a);
         }
     }
@@ -153,17 +144,17 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     std::vector<double> frequencies; //vector containing the frequencies, necessary to create a pop.
     for (unsigned int i = 0; i < population.size(); ++i)
     {
-        population[i].freq = (population[i].num) / N;
+        population[i].frequency = (population[i].num) / N;
         frequencies.push_back((population[i].num) / N);
     }
     
     //now we check and print everything:
     for (unsigned int i = 0; i < population.size(); ++i)
     {
-        std::cout << i+1 << ") " << population[i].seq << " appeared " << population[i].num << " times. Frequency = " << population[i].freq << std::endl;
+        std::cout << i+1 << ") " << population[i].seq << " appeared " << population[i].num << " times. Frequency = " << population[i].frequency << std::endl;
     }
     std::cout << "The number of alleles is : " << A << "\nThe total number of sequences is : " << N << std::endl;
     
     //we create the pop. to begin the simulation
-    return new Population (N, generation_number, A, frequencies, marker_sites);    
+    return new Population (population,N, generation_number, A, frequencies);    
 }
