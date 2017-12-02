@@ -26,9 +26,18 @@ class Random {
 	///@param total_pop : total population  
 	std::vector<double> multinomial_pop(std::vector<double> frequencies, unsigned int size_pop);
 	
-	///@brief : Simulation of a uniform distribution
-	///@param value : maximum value of the distribution
-	int uniform (int value);	
+	///@brief : Simulation of a uniform distribution composed of real numbers
+	///@param : min_value minium value of the distribution
+	///@param : max_value maximum value of the distribution
+	///@return : double random number
+	double uniform_real (double min_value, double max_value);	
+	
+	///@brief : Simulation of a uniform distribution composed of discrete numbers
+	///@param : min_value minium value of the distribution
+	///@param : max_value maximum value of the distribution
+	///@return : integer random number
+	int uniform_int (int min_value, int max_value);
+
 };
 
 #endif
