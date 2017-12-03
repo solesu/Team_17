@@ -24,8 +24,6 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     std::cout << "Welcome. For the simulation to begin please insert a fasta file source:\n";
     std::cin >> infile;
     
-    //FILE VERIFICATION STILL TO ADD
-    
     std::ifstream input(infile); //we create the stream
     try
 	{	
@@ -38,7 +36,6 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
 	{
 		std::cerr << "Error opening '"<< infile <<"'. Bailing out." << std::endl;
 	}
-
     
     //fasta reading
     //Sources: http://rosettacode.org/wiki/FASTA_format#C.2B.2B
