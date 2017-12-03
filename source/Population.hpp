@@ -78,6 +78,12 @@ class Population
 	 */
 	void setAlleles_number(unsigned int alleles_number);
 	
+	 /***
+	 @brief :setter for the frequencies of alleles
+	 @param vector of doubles : the new frequencies 
+	 */
+	void setAlleles_frequencies(std::vector<double>);
+	
 	//update:
 	/***
 	@brief : will update for each generation the alleles frequencies

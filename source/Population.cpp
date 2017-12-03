@@ -55,9 +55,15 @@ void Population::setGenerations_number(unsigned int generations_number)
 	generations_number_= generations_number;
 }
 	
+
 void Population::setAlleles_number(unsigned int alleles_number)
 {
-	alleles_number_ = alleles_number;
+	alleles_number_ = alleles_number; 
+}
+
+void Population::setAlleles_frequencies(std::vector<double> new_frequencies )
+{
+	alleles_frequencies_=new_frequencies;
 }
 	
 //update:

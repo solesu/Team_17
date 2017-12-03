@@ -22,7 +22,7 @@ std::vector<double> Random::multinomial_pop (std::vector<double> frequencies, un
 	{
 		new_frequencies.push_back((binomial(((frequencies)[i]*size_pop)/old_pop, new_pop)));
 		new_pop  -= (new_frequencies)[i]*size_pop;
-		old_pop -= frequencies[i];
+		old_pop -= frequencies[i]*size_pop;
 	}
 	
 	assert (old_pop==0);

@@ -3,6 +3,7 @@
 
 #include "Population.hpp"
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 
@@ -19,7 +20,7 @@ class Simulation
 		/**
 		 * creates a new population with the values decided by the user
 		 */
-		 void launchSimulation(Population* p, unsigned int runs_number);
+		 void launchSimulation(Population* p);//, unsigned int runs_number);
 		 Population* create_pop(unsigned int generation_number, std::vector<unsigned int> marker_sites);
 		
 		

@@ -1,15 +1,34 @@
 #include "Simulation.hpp"
 
-void Simulation::launchSimulation(Population* p, unsigned int runs_number)
+void Simulation::launchSimulation(Population* p)//, unsigned int runs_number)
 {
     Random randm;
 	Random& r=randm;
-	for(unsigned int i(0); i<runs_number; ++i) //Will run the simulation with the same parameters runs_number times
+	 /* std::vector<Population*> populations;
+	  populations.push_back(p); */
+	
+    std::cout<<0<<"\t"; 
+	for (auto i: p->getAlleles_frequencies())
 	{
-		p->update(r);
-		p->print(std::cout);
-	} 
+	std::cout << std::fixed << std::setprecision(3) <<i << "|";
+	}
+	std::cout<<std::endl;
+	
+   for (unsigned int j(0); j< p->getGenerations_number();++j)
+   {
+	   std::cout<<j+1<<"\t"; 
+	
+		std::vector<double> new_frequencies;
+		new_frequencies=(r.multinomial_pop(p->getAlleles_frequencies(),p->getSize()));
+		p->setAlleles_frequencies(new_frequencies);
+		
+	for (auto i : p->getAlleles_frequencies())
+	std::cout << std::fixed << std::setprecision(3) <<i << "|";
+	
+	}
+		std::cout<<std::endl;
 }
+
 
 		
 Population* Simulation::create_pop(unsigned int generation_number, std::vector<unsigned int> marker_sites)
@@ -156,12 +175,17 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     }
     
     //now we check and print everything:
+    
     for (unsigned int i = 0; i < population.size(); ++i)
     {
-        std::cout << i+1 << ") " << population[i].seq << " appeared " << population[i].num << " times. Frequency = " << population[i].freq << std::endl;
+       std::cout << i+1 << ") " << population[i].seq << " appeared " << population[i].num << " times. Frequency = " << population[i].freq << std::endl;
+       
     }
+    std::cout<<std::endl;
     std::cout << "The number of alleles is : " << A << "\nThe total number of sequences is : " << N << std::endl;
-    
-    //we create the pop. to begin the simulation
+
+    //we create the pop. to begin the simulation*/
     return new Population (N, generation_number, A, frequencies, marker_sites);    
+		
+		
 }
