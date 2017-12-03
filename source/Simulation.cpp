@@ -14,7 +14,7 @@ void Simulation::launchSimulation(Population* p, unsigned int runs_number)
 		
 Population* Simulation::create_pop(unsigned int generation_number, std::vector<unsigned int> marker_sites)
 {
-    double N = 0;           //number of sequences = number of people.
+    double N = 0;           //total number of sequences = number of people.
     unsigned int A = 0;     //number of different alleles.
     std::vector<Allele> population; //vector containing the different alleles and their frequences
     
@@ -29,7 +29,7 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
     std::ifstream input(infile); //we create the stream
     try
 	{	
-		if(!input.good()) //we check the file.fasta
+		if(!input.is_open()) //we check the file.fasta
 		{
 			throw 42;
 		}
@@ -50,9 +50,31 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
             if(!name.empty()) //Print out what we read from the last entry
             {
                 N += 1;
-                for (unsigned int i = 0; i< marker_sites.size(); ++i)
+                for (unsigned int i = 0; i < marker_sites.size(); ++i)
                 {
-                    sequence.push_back(content[marker_sites[i]]);
+                    //check in case there is a mistake inside the nuclotides sequence
+                    if (content[pos[i]] == 'a' or content[pos[i]] == 'A' or
+                        content[pos[i]] == 't' or content[pos[i]] == 'T' or
+                        content[pos[i]] == 'g' or content[pos[i]] == 'G' or
+                        content[pos[i]] == 'c' or content[pos[i]] == 'C')
+                    {
+                        sequence.push_back(content[marker_sites[i]]);
+                    }
+                    else
+                    {
+                        int random_number = rand() % 4; //generates a pseudo random number between 0 and 4
+                        switch (random_number)
+                        {
+                            case 0:
+                                sequence.push_back('A');break;
+                            case 1:
+                                sequence.push_back('T');break;
+                            case 2:
+                                sequence.push_back('G');break;
+                            case 3:
+                                sequence.push_back('C');break;
+                        }
+                    }
                 }
                 
                 bool new_seq = true; //we first assume it is a new sequence then we check if we already have it in our population of alleles
@@ -109,7 +131,29 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
         N += 1;
         for (unsigned int i = 0; i < marker_sites.size(); ++i)
         {
-            sequence.push_back(content[marker_sites[i]]);
+            //check in case there is a mistake inside the nuclotides sequence
+            if (content[pos[i]] == 'a' or content[pos[i]] == 'A' or
+                content[pos[i]] == 't' or content[pos[i]] == 'T' or
+                content[pos[i]] == 'g' or content[pos[i]] == 'G' or
+                content[pos[i]] == 'c' or content[pos[i]] == 'C')
+            {
+                sequence.push_back(content[marker_sites[i]]);
+            }
+            else
+            {
+                int random_number = rand() % 4; //generates a pseudo random number between 0 and 4
+                switch (random_number)
+                {
+                    case 0:
+                        sequence.push_back('A');break;
+                    case 1:
+                        sequence.push_back('T');break;
+                    case 2:
+                        sequence.push_back('G');break;
+                    case 3:
+                        sequence.push_back('C');break;
+                }
+            }
         }
         bool new_seq = true; //we first assume that it's a new sequence, then we check if we already have it in our population of alleles
         
@@ -135,6 +179,8 @@ Population* Simulation::create_pop(unsigned int generation_number, std::vector<u
             population.push_back(a);
         }
     }
+    
+    input.close();
     
     /*now the vector contains the diffents alleles; we can
      calculate the frequencies and the number of alleles
